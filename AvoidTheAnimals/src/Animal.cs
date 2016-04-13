@@ -12,7 +12,7 @@ namespace AvoidTheAnimals.src
 {
     class Animal
     {
-        private CollisionBox dimensions;
+        private TheOlian.Collision.BoundingBox dimensions;
         private Vector2 velocity;
         private Texture2D texture;
 
@@ -53,7 +53,7 @@ namespace AvoidTheAnimals.src
             return dimensions.getBoundingBox().Location.ToVector2();
         }
 
-        public CollisionBox getBox()
+        public TheOlian.Collision.BoundingBox getBox()
         {
             return dimensions;
         }

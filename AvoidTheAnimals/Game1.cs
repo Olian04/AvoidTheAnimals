@@ -39,12 +39,13 @@ namespace AvoidTheAnimals
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            graphics.PreferredBackBufferHeight = 720;
-            graphics.PreferredBackBufferWidth = 1080;
-            graphics.ApplyChanges();
 
             IsFixedTimeStep = true;
             Window.Position = new Point(200, 100);
+
+            graphics.PreferredBackBufferHeight = 720;
+            graphics.PreferredBackBufferWidth = 1080;
+            graphics.ApplyChanges();
 
         }
 

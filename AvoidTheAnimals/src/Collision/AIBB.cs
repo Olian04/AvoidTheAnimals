@@ -9,7 +9,7 @@ namespace TheOlian.Collision
     /**
      * AIDBC = Axis Independent Bounding Box
      */
-    class AIBB : RectCollisionCalc, CollisionBox
+    class AIBB : RectCollisionCalc, BoundingBox
     {
         private static boundingType TYPE = boundingType.AIDBC;
 

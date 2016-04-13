@@ -3,7 +3,7 @@
 namespace TheOlian.Collision
 {
     enum boundingType {AABB, AIDBC}
-    interface CollisionBox
+    interface BoundingBox
     {
         boundingType getBoundinType();
 
@@ -13,13 +13,13 @@ namespace TheOlian.Collision
         Vector2 getCenter();
         Vector2 getSize();
 
-        bool Intersects(CollisionBox target);
-        bool isLeft(CollisionBox target);
-        bool isRight(CollisionBox target);
-        bool isAbove(CollisionBox target);
-        bool isBelow(CollisionBox target);
-        double degreeTo(CollisionBox target);
-        double radiantTo(CollisionBox target);
+        bool Intersects(BoundingBox target);
+        bool isLeft(BoundingBox target);
+        bool isRight(BoundingBox target);
+        bool isAbove(BoundingBox target);
+        bool isBelow(BoundingBox target);
+        double degreeTo(BoundingBox target);
+        double radiantTo(BoundingBox target);
 
     }
 }

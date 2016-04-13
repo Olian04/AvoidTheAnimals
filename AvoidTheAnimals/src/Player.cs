@@ -13,7 +13,7 @@ namespace AvoidTheAnimals.src
 {
     class Player
     {
-        private CollisionBox dimensions;
+        private TheOlian.Collision.BoundingBox dimensions;
         private static Texture2D texture;
 
         public static void Init(ContentManager Content) {
@@ -39,7 +39,7 @@ namespace AvoidTheAnimals.src
             return dimensions.getBoundingBox().Location.ToVector2();
         }
 
-        public CollisionBox getBox() {
+        public TheOlian.Collision.BoundingBox getBox() {
             return dimensions;
         }
     }

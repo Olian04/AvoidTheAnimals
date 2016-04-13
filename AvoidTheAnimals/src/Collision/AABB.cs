@@ -12,7 +12,7 @@ namespace TheOlian.Collision
      * AABB = Axis Alined Bounding Box
      * (Rectangle hitbox)
      */
-    class AABB : RectCollisionCalc, CollisionBox
+    class AABB : RectCollisionCalc, BoundingBox
     {
         private static boundingType TYPE = boundingType.AABB;
 
