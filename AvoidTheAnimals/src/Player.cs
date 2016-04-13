@@ -7,20 +7,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using TheOlian.Collision;
+
 namespace AvoidTheAnimals.src
 {
     class Player
     {
-        private AABB dimensions;
+        private CollisionBox dimensions;
         private static Texture2D texture;
 
         public static void Init(ContentManager Content) {
             texture = Content.Load<Texture2D>("Sad_Sun.png");
         }
 
-        public Player(Rectangle dimensions)
+        public Player(Vector2 pos)
         {
-            this.dimensions = new AABB(dimensions);
+            this.dimensions = new AIBB(pos, 25);
         }
 
         public void Update(MouseState ms)
@@ -37,7 +39,7 @@ namespace AvoidTheAnimals.src
             return dimensions.getBoundingBox().Location.ToVector2();
         }
 
-        public AABB getBox() {
+        public CollisionBox getBox() {
             return dimensions;
         }
     }

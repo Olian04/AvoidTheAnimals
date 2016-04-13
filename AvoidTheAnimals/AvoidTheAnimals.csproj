@@ -38,11 +38,14 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="src\Collision\AABB.cs" />
+    <Compile Include="src\Collision\AIBB.cs" />
+    <Compile Include="src\Collision\CollisionBox.cs" />
+    <Compile Include="src\Collision\RectCollisionCalc.cs" />
     <Compile Include="src\FontRenderer.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\AABB.cs" />
     <Compile Include="src\Animal.cs" />
     <Compile Include="src\Explosion.cs" />
     <Compile Include="src\Player.cs" />

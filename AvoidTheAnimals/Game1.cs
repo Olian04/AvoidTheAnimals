@@ -77,10 +77,7 @@ namespace AvoidTheAnimals
 
             explosions = new List<Explosion>();
 
-            player = new Player(new Rectangle(new Point(
-                graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight / 2), 
-                new Point(50, 50)));
-
+            player = new Player(new Vector2(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight / 2) );
 
             sr = new StreamReader("Content/.score.txt");
             highestStreak = Int32.Parse(sr.ReadLine());
@@ -176,25 +173,25 @@ namespace AvoidTheAnimals
         }
 
         private Animal randomSpawn() {
-            Point position = new Point(), size = new Point(30);
+            Vector2 position = new Vector2();
             Vector2 velocity = new Vector2(), diff;
 
             switch (rand.Next(0, 4)) {
                 case 0: //Upp
-                    position = new Point(rand.Next(0, graphics.PreferredBackBufferWidth), -10);
+                    position = new Vector2(rand.Next(0, graphics.PreferredBackBufferWidth), -10);
                     break;
                 case 1: //Down
-                    position = new Point(rand.Next(0, graphics.PreferredBackBufferWidth), graphics.PreferredBackBufferHeight + 10);
+                    position = new Vector2(rand.Next(0, graphics.PreferredBackBufferWidth), graphics.PreferredBackBufferHeight + 10);
                     break;
                 case 2: //Left
-                    position = new Point(-10, rand.Next(0, graphics.PreferredBackBufferHeight));
+                    position = new Vector2(-10, rand.Next(0, graphics.PreferredBackBufferHeight));
                     break;
                 case 3: //Right
-                    position = new Point(graphics.PreferredBackBufferWidth + 10, rand.Next(1, graphics.PreferredBackBufferHeight));
+                    position = new Vector2(graphics.PreferredBackBufferWidth + 10, rand.Next(1, graphics.PreferredBackBufferHeight));
                     break;
             }
 
-            diff = player.getPosition() - position.ToVector2();
+            diff = player.getPosition() - position;
 
             diff.X = (float)Math.Round(diff.X / 50, 2);
             diff.Y = (float)Math.Round(diff.Y / 50, 2);
@@ -208,7 +205,7 @@ namespace AvoidTheAnimals
             else
                 velocity.Y = 1;
 
-            return new Animal(new Rectangle(position, size), diff);
+            return new Animal(position, diff);
         }
 
         /// <summary>

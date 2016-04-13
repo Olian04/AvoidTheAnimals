@@ -6,11 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using TheOlian.Collision;
+
 namespace AvoidTheAnimals.src
 {
     class Animal
     {
-        private AABB dimensions;
+        private CollisionBox dimensions;
         private Vector2 velocity;
         private Texture2D texture;
 
@@ -31,8 +33,8 @@ namespace AvoidTheAnimals.src
             availableTextures[9] = Content.Load<Texture2D>("Animals/snake.png");
         }
 
-        public Animal(Rectangle dimensions, Vector2 velocity) {
-            this.dimensions = new AABB(dimensions);
+        public Animal(Vector2 pos, Vector2 velocity) {
+            this.dimensions = new AIBB(pos, 15);
             this.velocity = velocity;
             texture = availableTextures[new Random().Next(0, 10)];
         }
@@ -51,7 +53,7 @@ namespace AvoidTheAnimals.src
             return dimensions.getBoundingBox().Location.ToVector2();
         }
 
-        public AABB getBox()
+        public CollisionBox getBox()
         {
             return dimensions;
         }
