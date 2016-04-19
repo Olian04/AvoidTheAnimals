@@ -34,7 +34,7 @@ namespace AvoidTheAnimals.src
         }
 
         public Animal(Vector2 pos, Vector2 velocity) {
-            this.dimensions = new AIBB(pos, 15);
+            this.dimensions = new AIBB(pos, 15 * Game1.sizeScaler);
             this.velocity = velocity;
             texture = availableTextures[new Random().Next(0, 10)];
         }

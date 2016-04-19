@@ -12,10 +12,8 @@ namespace AvoidTheAnimals
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        public static void Main()
+        static void Main()
         {
-            Game1 game = new Game1();
-            game.Run();
         }
     }
 #endif

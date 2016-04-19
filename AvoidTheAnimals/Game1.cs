@@ -35,7 +35,10 @@ namespace AvoidTheAnimals
         FontRenderer fontRenderer;
         Font font;
 
-        public Game1()
+        private Vector2 designSize, realSize;
+        public static float sizeScaler { get; private set; }
+
+        public Game1(int height, int width)
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -43,8 +46,13 @@ namespace AvoidTheAnimals
             IsFixedTimeStep = true;
             Window.Position = new Point(200, 100);
 
-            graphics.PreferredBackBufferHeight = 720;
-            graphics.PreferredBackBufferWidth = 1080;
+            designSize = new Vector2(1080, 720);
+            realSize = new Vector2(width, height);
+            Vector2 _sizeScaler = realSize / designSize;
+            sizeScaler = (_sizeScaler.X + _sizeScaler.Y) / 2;
+
+            graphics.PreferredBackBufferHeight = height;
+            graphics.PreferredBackBufferWidth = width;
             graphics.ApplyChanges();
 
         }
@@ -71,7 +79,7 @@ namespace AvoidTheAnimals
 
             fontRenderer = new FontRenderer();
             font = new Font("Font/DS-Digital", Content);
-            font.Scale = 0.5f;
+            font.Scale = 0.5f * Game1.sizeScaler;
 
             animals = new List<Animal>();
             spawnTimerLimit = 100;
@@ -81,7 +89,7 @@ namespace AvoidTheAnimals
             player = new Player(new Vector2(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight / 2) );
 
             sr = new StreamReader("Content/.score.txt");
-            highestStreak = Int32.Parse(sr.ReadLine());
+            highestStreak = int.Parse(sr.ReadLine());
             sr.Close();
             base.Initialize();
         }
@@ -227,13 +235,16 @@ namespace AvoidTheAnimals
                 a.Draw(spriteBatch);
             player.Draw(spriteBatch);
 
-            fontRenderer.DrawText(spriteBatch, new Vector2(graphics.PreferredBackBufferWidth / 2 - 10,graphics.PreferredBackBufferHeight - 46), "Streak: " + streak, font, Color.Black);
-            fontRenderer.DrawText(spriteBatch, new Vector2(graphics.PreferredBackBufferWidth / 2 - 30, graphics.PreferredBackBufferHeight - 34), "Highest Streak: " + highestStreak, font, Color.Black);
-            fontRenderer.DrawText(spriteBatch, new Vector2(graphics.PreferredBackBufferWidth / 2 - 50, graphics.PreferredBackBufferHeight - 22), "Animals Slaughtered: " + killedAnimals, font, Color.Black);
-
+            drawGUI(spriteBatch);
             spriteBatch.End();
 
            base.Draw(gameTime);
+        }
+
+        private void drawGUI(SpriteBatch spriteBatch) {
+            fontRenderer.DrawText(spriteBatch, new Vector2(realSize.X / 2 - 10 * Game1.sizeScaler, realSize.Y - 46 * Game1.sizeScaler), "Streak: " + streak, font, Color.Black);
+            fontRenderer.DrawText(spriteBatch, new Vector2(realSize.X / 2 - 30 * Game1.sizeScaler, realSize.Y - 34 * Game1.sizeScaler), "Highest Streak: " + highestStreak, font, Color.Black);
+            fontRenderer.DrawText(spriteBatch, new Vector2(realSize.X / 2 - 50 * Game1.sizeScaler, realSize.Y - 22 * Game1.sizeScaler), "Animals Slaughtered: " + killedAnimals, font, Color.Black);
         }
     }
 }

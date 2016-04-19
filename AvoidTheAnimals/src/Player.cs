@@ -22,7 +22,7 @@ namespace AvoidTheAnimals.src
 
         public Player(Vector2 pos)
         {
-            this.dimensions = new AIBB(pos, 25);
+            this.dimensions = new AIBB(pos, 25 * Game1.sizeScaler);
         }
 
         public void Update(MouseState ms)

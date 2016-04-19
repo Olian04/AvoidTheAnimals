@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework;
 
 
 using AvoidTheAnimals;
+using System.Threading;
 
 namespace Launcher
 {
@@ -20,25 +21,52 @@ namespace Launcher
         public Form1()
         {
             InitializeComponent();
-        }
+            this.Text = "Avoid the Animals!";
 
-        int height, width;
+            ResolutionDrop.Items.Add(new ResItem(1080, 720));
+            ResolutionDrop.Items.Add(new ResItem(1080 * 16/9, 1080));
+            ResolutionDrop.Items.Add(new ResItem(400, 300));
+            ResolutionDrop.SelectedItem = ResolutionDrop.Items[0];
+        }
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            height = (int)numericUpDown1.Value;
-            width = (int)numericUpDown2.Value;
-            AvoidTheAnimals.Program.Main();
+            ResItem resSel = (ResItem)ResolutionDrop.SelectedItem;
+            Thread t = StartTheThread(resSel.height, resSel.width);
+
+            this.Close();
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        public Thread StartTheThread(int param1, int param2)
+        {
+            var t = new Thread(() => StartGame(param1, param2));
+            t.Start();
+            return t;
+        }
+
+        private void StartGame(int height, int width) {
+            AvoidTheAnimals.Game1 game = new Game1(height, width);
+            game.Run();
+        }
+
+        private void ResolutionDrop_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+    }
 
-        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+    class ResItem
+    {
+        public int height, width;
+        public ResItem(int width, int height)
         {
+            this.height = height;
+            this.width = width;
+        }
 
+        public override string ToString()
+        {
+            return width + " x " + height;
         }
     }
 }

@@ -29,72 +29,49 @@
         private void InitializeComponent()
         {
             this.StartButton = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.HeightLabel = new System.Windows.Forms.Label();
-            this.WidthLable = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.ResolutionDrop = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // StartButton
             // 
-            this.StartButton.Location = new System.Drawing.Point(18, 81);
+            this.StartButton.Location = new System.Drawing.Point(18, 51);
             this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(188, 37);
+            this.StartButton.Size = new System.Drawing.Size(518, 50);
             this.StartButton.TabIndex = 0;
             this.StartButton.Text = "Start";
             this.StartButton.UseVisualStyleBackColor = true;
             this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
-            // numericUpDown1
+            // ResolutionDrop
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(86, 7);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 31);
-            this.numericUpDown1.TabIndex = 1;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.ResolutionDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ResolutionDrop.FormattingEnabled = true;
+            this.ResolutionDrop.Location = new System.Drawing.Point(155, 12);
+            this.ResolutionDrop.Name = "ResolutionDrop";
+            this.ResolutionDrop.Size = new System.Drawing.Size(381, 33);
+            this.ResolutionDrop.TabIndex = 1;
+            this.ResolutionDrop.SelectedIndexChanged += new System.EventHandler(this.ResolutionDrop_SelectedIndexChanged);
             // 
-            // numericUpDown2
+            // label1
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(86, 44);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 31);
-            this.numericUpDown2.TabIndex = 2;
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
-            // 
-            // HeightLabel
-            // 
-            this.HeightLabel.AutoSize = true;
-            this.HeightLabel.Location = new System.Drawing.Point(12, 9);
-            this.HeightLabel.Name = "HeightLabel";
-            this.HeightLabel.Size = new System.Drawing.Size(68, 25);
-            this.HeightLabel.TabIndex = 3;
-            this.HeightLabel.Text = "Heigh";
-            // 
-            // WidthLable
-            // 
-            this.WidthLable.AutoSize = true;
-            this.WidthLable.Location = new System.Drawing.Point(13, 44);
-            this.WidthLable.Name = "WidthLable";
-            this.WidthLable.Size = new System.Drawing.Size(67, 25);
-            this.WidthLable.TabIndex = 4;
-            this.WidthLable.Text = "Width";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(136, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Window Size";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(232, 143);
-            this.Controls.Add(this.WidthLable);
-            this.Controls.Add(this.HeightLabel);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
+            this.ClientSize = new System.Drawing.Size(548, 113);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ResolutionDrop);
             this.Controls.Add(this.StartButton);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,10 +80,8 @@
         #endregion
 
         private System.Windows.Forms.Button StartButton;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.Label HeightLabel;
-        private System.Windows.Forms.Label WidthLable;
+        private System.Windows.Forms.ComboBox ResolutionDrop;
+        private System.Windows.Forms.Label label1;
     }
 }
 
